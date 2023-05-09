@@ -26,6 +26,7 @@ jobs:
       - name: const et pub
         uses: goreleaser/goreleaser-action@v2
         with:
+          version: latest # Spécifie la dernière version de Goreleaser
           args: release --rm-dist
 
       # Étape 4 : Construire et pousser l'image Docker sur le hub Docker
