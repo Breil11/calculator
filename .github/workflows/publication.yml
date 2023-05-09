@@ -23,11 +23,11 @@ jobs:
         run: go mod download
 
       # Étape 3 : Construire et publier les artefacts avec Goreleaser
-      - name: const et pub
-        uses: goreleaser/goreleaser-action@v2
-        with:
-          version: latest # Spécifie la dernière version de Goreleaser
-          args: release --rm-dist
+   #   - name: const et pub
+   #     uses: goreleaser/goreleaser-action@v2
+   #     with:
+   #       version: latest # Spécifie la dernière version de Goreleaser
+    #      args: release --rm-dist
 
       # Étape 4 : Construire et pousser l'image Docker sur le hub Docker
       - name: Login to Docker Hub
