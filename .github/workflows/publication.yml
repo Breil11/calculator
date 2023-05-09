@@ -40,4 +40,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: breil11/calculator:${{ github.ref }}
+         # tags: breil11/calculator:${{ github.ref }}
+          tags: breil11/calculator:latest
+
