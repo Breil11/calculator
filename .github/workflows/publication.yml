@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - '*'
+  workflow_dispatch: # peut etre declenchée manuellement
 
 jobs:
   build:
