@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code      # je récupère le code source de mon repo.
         uses: actions/checkout@v2
       - name: Run semgrep         #j'utilise l'action returntocorp/semgrep-action pour exécuter une analyse statique avec semgrep en utilisant les règles par défau
-        uses: returntocorp/semgrep-action@v1.4.0
+        uses: returntocorp/semgrep-action@v1.6.0
       - name: Run hadolint          #j' exécute une analyse Dockerfile avec hadolint en utilisant les règles par défaut.
         run: docker run --rm -i hadolint/hadolint < Dockerfile
       - name: Run super-linter     #j'utilise l'action github/super-linter pour exécuter super-linter uniquement si l'événement provient d'un pull_request.
