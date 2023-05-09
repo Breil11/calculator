@@ -1,0 +1,30 @@
+name: Test  #Le nom de mon workflow
+
+on:        # le workflow est déclenché pour chaque push sur la branche principale et pour chaque pull request ouvert sur la branche principale.
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Go ${{ matrix.go-version }} Test #on va devoir spécifier la version de Go avec laquelle le travail est lié.
+    runs-on: ubuntu-latest   #L'environnement sur lequel le travail sera exécuté.
+    strategy:
+      matrix:
+        go-version: [1.17, 1.18, 1.19] #on specifie les versions sur lesquelles l'application doit être testée
+
+    steps:
+    - name: Checkout code    #je vérifie le code source dans mon dépôt.
+      uses: actions/checkout@v2
+
+    - name: Set up Go ${{ matrix.go-version }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go-version }} #je récupère la version de Go à utiliser depuis la matrice de stratégie.
+
+    - name: Install dependencies
+      run: go mod download  #je télécharge les dépendances nécessaires.
+
+    - name: Run tests
+      run: go test ./...    #j'exécute la commande "go test ./..." pour exécuter les tests unitaires sur les fichiers du projet.

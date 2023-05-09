@@ -1,0 +1,39 @@
+name: Dependabot
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # vérification quotidienne tous les minuits
+  workflow_dispatch: # peut etre declenchée manuellement
+
+jobs:
+  dependabot-go: # pour vérifier les dépendances Go
+    name: Dependabot for Go
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Dependabot for Go
+        uses: dependabot/dependabot-core@v0.175.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          directory: "/"
+          update: "daily" #mettre à jour les dépendances quotidiennement
+          package-ecosystem: "gomod" #utiliser le gestionnaire de dépendances "gomod" pour les packages Go
+          schedule: "daily"
+          ignore: "all, non-zero" #ignorer toutes les mises à jour qui ne sont pas pertinentes
+
+  dependabot-docker: #pour les dépendances Docker avec les memes config sauf le package-ecosystem
+    name: Dependabot for Docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Dependabot for Docker
+        uses: dependabot/dependabot-core@v0.175.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          directory: "/"
+          update: "daily"
+          package-ecosystem: "docker" #gestionnaire de packages Docker
+          schedule: "daily"
+          ignore: "all, non-zero"
