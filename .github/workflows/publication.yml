@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          dockerfile: ./docker/Dockerfile
+          dockerfile: https://github.com/Breil11/calculator/blob/master/Dockerfile
           push: true
          # tags: breil11/calculator:${{ github.ref }}
           tags: breil11/calculator:latest
