@@ -44,5 +44,5 @@ jobs:
           dockerfile: ./docker/Dockerfile
           push: true
          # tags: breil11/calculator:${{ github.ref }}
-          tags: breil11/calculator:latest
+          tags: bk09/calculator:latest
 
