@@ -8,7 +8,7 @@ RUN go mod download
 
 ADD . .
 
-RUN go build -o /calculator
+RUN go build -o /super_calculator
 
 FROM gcr.io/distroless/base-debian10
 
