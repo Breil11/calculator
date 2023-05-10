@@ -5,7 +5,7 @@ package main
 
 import (
 	"fmt"
-	"calculator/cmd"
+	"super_calculator/cmd"
 )
 
 func main() {
