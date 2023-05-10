@@ -3,7 +3,7 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 */
 package main
 
-import "super_calculator/cmd"
+import "./cmd"
 
 func main() {
 	cmd.Execute()
