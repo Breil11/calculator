@@ -1,22 +1,14 @@
-FROM golang:1.19-buster AS build
+FROM golang:alpine AS build
 
 WORKDIR /app
-
-COPY go.mod ./
-COPY go.sum ./
-RUN go mod download
-
 COPY . .
 
-WORKDIR /app/cmd  # pour accéder au répertoire cmd
-RUN go build -o /super_calculator
+RUN apk update && \
+    apk add git && \
+    go mod tidy && \
+    go build -o /super_calculator
 
 FROM gcr.io/distroless/base-debian10
+COPY --from=build /super_calculator /
 
-WORKDIR /
-
-COPY --from=build /super_calculator /super_calculator
-
-USER nonroot:nonroot
-
-ENTRYPOINT ["/super_calculator"]
+CMD ["/super_calculator"]
