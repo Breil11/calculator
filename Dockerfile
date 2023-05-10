@@ -1,21 +1,15 @@
-FROM golang:1.19-buster AS build
+FROM golang:1.16-alpine3.13
 
 WORKDIR /app
 
-COPY . .
-COPY . .
+COPY go.mod go.sum ./
+
 RUN go mod download
 
-ADD . .
+COPY . .
 
 RUN go build -o /calculator
 
 FROM gcr.io/distroless/base-debian10
-
-WORKDIR /
-
-COPY --from=build /calculator /calculator
-
-USER nonroot:nonroot
-
-ENTRYPOINT ["/calculator"]
+COPY --from=0 /calculator /
+CMD ["/calculator"]
