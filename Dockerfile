@@ -6,7 +6,7 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-COPY calculator/super_calculator .
+COPY . .
 
 RUN go build -o /super_calculator
 
@@ -18,4 +18,4 @@ COPY --from=build /super_calculator /super_calculator
 
 USER nonroot:nonroot
 
-ENTRYPOINT ["/calculator"]
+ENTRYPOINT ["/super_calculator"]
