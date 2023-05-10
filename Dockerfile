@@ -2,20 +2,20 @@ FROM golang:1.19-buster AS build
 
 WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
+COPY . .
+COPY . .
 RUN go mod download
 
-COPY . .
+ADD . .
 
-RUN go build -o /super_calculator
+RUN go build -o /calculator
 
 FROM gcr.io/distroless/base-debian10
 
 WORKDIR /
 
-COPY --from=build /super_calculator /super_calculator
+COPY --from=build /calculator /calculator
 
 USER nonroot:nonroot
 
-ENTRYPOINT ["/super_calculator"]
+ENTRYPOINT ["/calculator"]
