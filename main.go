@@ -1,10 +1,12 @@
+
 /*
-Copyright © 2022
+Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 */
 package main
 
-import "super_calculator/cmd"
+import "calculator/cmd"
 
 func main() {
-    cmd.Execute()
+	cmd.Execute()
 }
+
