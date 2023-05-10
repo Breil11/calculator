@@ -8,6 +8,7 @@ RUN go mod download
 
 COPY . .
 
+WORKDIR /app/cmd  # pour accéder au répertoire cmd
 RUN go build -o /super_calculator
 
 FROM gcr.io/distroless/base-debian10
