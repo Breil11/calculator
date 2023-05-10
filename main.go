@@ -1,14 +1,10 @@
 /*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+Copyright © 2022
 */
 package main
 
-import (
-	"fmt"
-	""
-)
+import "super_calculator/cmd"
 
 func main() {
-	fmt.Println("Starting calculator...")
-	cmd.Execute()
+    cmd.Execute()
 }
