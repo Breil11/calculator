@@ -1,3 +1,2 @@
-module nom_de_votre_module
-
+module super_calculator
 go 1.20
