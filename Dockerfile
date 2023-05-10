@@ -6,16 +6,16 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-ADD . .
+COPY calculator/ .
 
-RUN go build -o /calculator
+RUN go build -o /super_calculator
 
 FROM gcr.io/distroless/base-debian10
 
 WORKDIR /
 
-COPY --from=build /calculator /calculator
+COPY --from=build /super_calculator /super_calculator
 
 USER nonroot:nonroot
 
-ENTRYPOINT ["/calculator"]
+ENTRYPOINT ["/super_calculator"]
